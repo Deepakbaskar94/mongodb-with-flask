@@ -1,0 +1,121 @@
+==========================================================================================================================================================================
+	----REFERENCES----
+
+https://www.youtube.com/watch?v=lBBtq3Oawqw
+
+TABLE ----------------------> COLLECTION
+DB -------------------------> DB
+ROW ------------------------> DOCUMENT
+       ===========================================================================================================================
+       ===========================================================================================================================
+       
+	----GET TO MONGODB SHELL----
+	
+In terminal enter ,
+		$ mongo 
+		 
+	========================================================================================================================
+	========================================================================================================================	
+		
+	----WORKING WITH MONGO----
+	
+1.CREATE DATABASE
+	> use <databaseName>
+		OR
+	> use <databaseName>;
+	eg: use exampledb;
+	
+2. SHOW CURRENT DATABSE 
+	> db
+	eg: db
+	    exampledb
+	    
+3. SHOW ALL DATABASES
+	> show dbs;
+	    
+4. CREATE COLLECTION(TABLE) (RECOMMENDED COMMAND)
+	> db.createCollection('collectionName');
+	eg : > db.createCollection('DemoCollection');
+	
+5. CREATE A COLLECTION WITH RECORDS INSIDE
+	> db.collectionName.insert({key : 'value'})
+	eg: db.demoCollection.insert({Name : 'Admin'})
+	
+6. SHOW AVAILABLE COLLECTIONS
+	> show collections;
+	
+7. LIST OUT THE RECORDS THAT ARE ADDED
+	> db.CollectionName.find();
+	
+8. PASS ADDITIONAL PARAMETER WHILE CREATING A COLLECTION
+	> db.createCollection('collectionName',{parameter1,parameter2 ...etc})
+	eg : > db.createCollection('democollection' , {capped : True, size :5242880 , max : 5})
+		Here , the maximum numberof documents that can be added is within the size of 5 MB an only a maximum of 5 records.
+		
+		
+		
+	IN MONGODB , ALL THE DOCUMENTS THAT HAVE BEEN ENTERED, WILL HAVE A PREASSIGNED AN ID(HEXADECIMAL VALUE). WE CAN OVERWRITE THE ID BY ADDING 		(_id : 'IdNumber') WITH THE DOCUMENT BY OVERWRITING , WE CAN SET AN ID NUMBER BY OUR OWN.
+	------------------------------------------------------------------------------------------------------------------------------------------
+	
+9. INSERT DOCUMENTS IN COLLECTIONS.
+	
+	--EMBEDED DOCUMENT--
+	eg :
+	> db.democollection.insert({regNo : '01' , name : 'student1' , course : {CourseName :"MCA" ,duration : "3 years"} , address : {city : 		  "bangalore" , state : "KA" , country : "IN"}})
+		--- IN THIS , THE COURSE AND ADDRESS ARE EMBEDED DOCUMENTS ---
+		
+		
+10. VAR CONCEPT (STORE IN A VARIABLE AND ADD DETAILS IN IT TO A COLLECTION)
+	eg: > var mydata = [{empid : 1 , empName : 'admin'}{empid : 2 , empName : 'QA'}]
+	    >db.newdata.insert(myemp);
+	
+11. UPDATE VALUE (ONLY THE FIRSTLY ENTERED VALUE WILL BE UPDATED)
+	eg: >db.newdata.update({empName : "manager"} , {$set:{ empname : "newAdmin"}})
+	
+12. UPDATE VALUES (UPDATE MULTIPLE VALUE IN A COLLECTION)
+	eg: >db.newdata.update({empName : "manager"} , {$set:{ empname : "newAdmin"}}, { multi : true})
+
+13. UPSERT (IF THE RECORDS ARE FOUND IT'LL UPDATE IT OR IT'LL INSERT IT.)
+	eg: >db.newdata.update({empName : "manager"} , {$set:{ empname : "newAdmin"}}, { upsert : true})
+	
+14. REMOVE RECORDS
+	> db.<collectioName>.remove({'Key' : 'Value'})
+	eg:db.newdata.remove({"empName" : "admin"})
+	
+15. SHOW SPECIFIC RECORD ONLY
+	> db.<collectionName>.find({'key':'Value'})
+	eg: > db.newemp.find({'empname':'admin'})
+	
+16. SHOW ONLY LIMITED NUMBER OF RECORDS
+	> db.<collectionName>.find().limit(<limitation number/amount>);
+	eg: db.newemp.find().limit(2);
+	
+17. SHOW RECORDS IN ASCENDING/DESCENDING ORDER
+	> db.<collectionName>.find()SORT({Key : 1/-1});
+	eg: db.newemp.find().sort({empname : -1});
+	
+18. FIND FROM AN EMBED RECORD
+	> db.<collection>.find({"key.embedkey" : "value"})
+	eg: > db.newemp.find({"address.city" : "bangalore"})
+	
+19. FIND VALUES GREATER/LESS  THAN A VALUE
+	>db.<collection>.find({key:{$gt:value}})
+	eg: >db.newemp.find({empid:{$gt:1}})
+	    >db.newemp.find({empid:{$lt:1}})
+	    
+20. SHOW SPECIFIC VALUE FROM SPECIFIC RECORD.
+	>db.<collection>.find({Key : {$in : [value1, value2 .....etc}})
+	eg: >db.newemp.find({empid : {$in : [3 , 6]}})
+	
+	
+     ----MONGODB INDEXING----
+	----------------
+1. 
+
+	
+
+
+
+
+
+
