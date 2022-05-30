@@ -5,8 +5,8 @@ app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
 
-db = client.flask_db
-todos = db.todos
+db = client.flask_db   #Database linking
+todos = db.todos       #Table Linking
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
